@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainpage_style.css') }}"/>
+    <title>Pokojové teploty</title>
+    
+</head>
+<body>
+
+<h1>Ovládání teploty</h1>
+
+<div class="rooms-container">
+    {% for room_id, room in room_data.items() %}
+    <div class="room {% if room['monitoring'] %}monitoringOn {{ room['mode']}}{% else %}monitoringOff{% endif %} {% if room['heating_on'] %}on{% else %}off{% endif %}" id="{{ room_id }}">
+            <a href="{{ url_for('room1', room_id=room_id) }}">{{ room_id }}<br>Teplota: <span id="temp-{{ room_id }}">{{ room['current_temp'] }}°C</span></a>
+        </div>
+    {% endfor %}
+
+</div>
+
+<script>
+    const room_id = "{{ room_id }}";
+</script>
+<script src="{{ url_for('static', filename='js/main_page_script.js') }}"></script>
+</body>
+</html>
+

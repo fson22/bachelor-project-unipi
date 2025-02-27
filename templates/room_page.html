@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/room_style.css') }}"/>
+    <title>Pokoj {{ room_id }}</title>
+  </head>
+  <body>
+
+
+<div class="slider-container">
+    <h3>{{ room_id }}</h3>
+    <label class="switch">
+      <input type="checkbox" id="roomModeSwitch" {{ 'checked' if monitoring else '' }}>
+      <span class="slider"></span>
+    </label>
+
+    <div id="currentTemp"><h4>{{ current_temp }}</h4></div> {# odstranil jsem if #}
+    <label for="myRange">Nastavit teplotu:</label>
+    <span id="sliderValue">{{ target_temp }}</span>
+    <input type="range" min="15" max="27" step='0.25' value={{ target_temp }} class="setTargetTemperature" id="myRange">
+    <button id="setTargetTemperature" data-room-id="{{ room_id }}">Nastavit teplotu</button>
+  </div>
+
+
+
+    <!-- REZIMY -->
+  
+  <div class="settings-container">
+    <h2>Nastavení režimů</h2>
+    
+    <!-- Denní režim -->
+    <div class="mode-container">
+      <h3>Denní režim</h3>
+      <label for="dayTemp">Nastavena teplota (°C): <span id="dayTempValue">{{ dayTempTarget if dayTempTarget is not none else 21}}</span></label>
+      <input type="range" min="15" max="27" step="0.25" value={{ dayTempTarget if dayTempTarget is not none else 21}} id="dayTemp">
+      
+      <div class="time-settings">
+        <label for="dayStart">Začátek:</label>
+        <input type="time" id="dayStart" value={{ dayModeTimeStart }}>
+        
+        <label for="dayEnd">Konec:</label>
+        <input type="time" id="dayEnd" value={{ dayModeTimeEnd }}>
+      </div>
+        <!-- Tlačítko pro potvrzení -->
+        <button id="saveDaySettings">Uložit denní režim</button>
+    </div>
+
+
+    <!-- Noční režim -->
+    <div class="mode-container">
+      <h3>Noční režim</h3>
+      <label for="nightTemp">Nastavena teplota (°C): <span id="nightTempValue">{{ nightTempTarget if nightTempTarget is not none else 18}}</span></label>
+      <input type="range" min="15" max="27" step="0.25" value={{ nightTempTarget if nightTempTarget is not none else 18}} id="nightTemp">
+      
+      {# <div class="time-settings">
+        <label for="nightStart">Začátek:</label>
+        <input type="time" id="nightStart" value={{ nightModeTimeStart }}>
+        
+        <label for="nightEnd">Konec:</label>
+        <input type="time" id="nightEnd" value={{ nightModeTimeEnd }}>
+      </div> #}
+
+        <!-- Tlačítko pro potvrzení -->
+        <button id="saveNightSettings">Uložit noční režim</button>
+    </div>
+  </div>
+
+  <script>
+    const room_id = "{{ room_id }}";
+  </script>
+
+  <script src="{{ url_for('static', filename='js/room_script.js') }}"></script>
+  </body>
+</html>

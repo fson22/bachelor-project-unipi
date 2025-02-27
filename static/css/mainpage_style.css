@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+h1 {
+    color: #004cff;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+.rooms-container {
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    grid-gap: 20px;
+}
+.room {
+    width: 200px;
+    height: 200px;
+    background-color: #004cff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    line-height: 2.5;
+}
+
+.room:hover {
+    transform: scale(1.05);
+}
+.room a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Ikona kolečka v levém horním rohu */
+.room::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.room.monitoringOn {
+    background-color: #004cff;
+}
+
+.room.monitoringOff {
+    background-color: gray;
+}
+
+.room.on::before {
+    background-color: #84FF33;
+}
+.room.off::before {
+    background-color: red;
+}
+
+/* ikona slunce pro denni rezim */
+.room.dayMode::after {
+    content: '☀️';
+    font-size: 30px;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+}
+
+/* ikona mesice pro nocni rezim */
+.room.nightMode::after {
+    content: '🌙';
+    font-size: 30px;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+}

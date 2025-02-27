@@ -1,0 +1,224 @@
+/* Základní styl těla stránky */
+body {
+    padding: 0 24px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Vertikální zobrazení */
+    justify-content: flex-start; /* Zarovnání shora */
+    align-items: center; /* Vycentrování na střed */
+    background-color: #f5f5f5; /* Světlé pozadí */
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+/* Toggle Switch */
+/* Styl pro toggle switch */
+.switch {
+    position: absolute;
+    top: 0; /* Umístíme na horní okraj */
+    right: 0; /* Umístíme na pravý okraj */
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-top: 25px;
+    right: 30px; /* Malá mezera od horního okraje */
+}
+
+/* Skrytí zaškrtávacího políčka */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Styl slideru přepínače */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+/* Styl pro "thumb" (pohybující se část přepínače) */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 5px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+/* Pokud je checkbox zaškrtnutý (aktivní režim) */
+input:checked + .slider {
+    background-color: rgb(16, 164, 16);
+}
+
+/* Pokud je checkbox zaškrtnutý, posune se "thumb" doprava */
+input:checked + .slider:before {
+    transform: translateX(23px);
+}
+
+
+
+
+/* Kontejner pro sekce */
+.slider-container,
+.settings-container {
+    width: 100%; /* Přizpůsobení šířky okna */
+    max-width: 400px; /* Maximální šířka sekcí */
+    margin-bottom: 20px; /* Mezera mezi sekcemi */
+}
+
+/* Kontejner pro posuvník teploty */
+.slider-container {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+    position: relative;
+}
+
+/* Tlačítka pro potvrzení */
+button {
+    background: #004cff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px; /* Mezera nad tlačítkem */
+    width: 100%; /* Tlačítko bude široké jako kontejner */
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0033cc; /* Tmavší modrá při najetí */
+}
+
+/* Nastavení režimů */
+.settings-container {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hodnota teploty */
+#sliderValue {
+    color: #004cff;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Obecné nadpisy */
+h4 {
+    color: #004cff;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+/* Popisky */
+label, span {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Styl posuvníků */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin: 10px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #004cff;
+    cursor: pointer;
+}
+
+/* Styl nastavení denního a nočního režimu */
+.mode-container {
+    margin-bottom: 30px;
+}
+
+#dayTempValue, #nightTempValue {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.time-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+input[type="time"] {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Zvýraznění sekcí */
+.mode-container h3 {
+    color: #004cff;
+    margin-bottom: 10px;
+}
+
+button {
+    background: #004cff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0033cc;
+}
